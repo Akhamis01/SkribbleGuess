@@ -1,0 +1,39 @@
+.messageContainer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 5%;
+    margin-top: 3px;
+}
+
+.messageText {
+    letter-spacing: 0;
+    float: left;
+    font-size: 1.1em;
+    word-wrap: break-word;
+}
+
+.sentText-from {
+    display: flex;
+    align-items: center;
+    font-family: Helvetica;
+    color: #0044ff;
+    letter-spacing: 0.3px;
+    display: inline;
+}
+
+.sentText-to {
+    display: flex;
+    align-items: center;
+    font-family: Helvetica;
+    color: gray;
+    letter-spacing: 0.3px;
+    display: inline;
+}
+
+.pr-10 {
+    padding-right: 10px;
+}
+
+.justifyStart {
+    justify-content: flex-start;
+}

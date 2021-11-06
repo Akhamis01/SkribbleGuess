@@ -1,0 +1,25 @@
+.drawing-info{
+    border: 2px solid black;
+    height: auto;
+}
+
+.current-drawer{
+    color: darkred;
+}
+
+.guess-word{
+    color: rgb(27, 141, 248);
+}
+
+.leave-button{
+    color: #fff !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #2d7aff;
+    padding: 3%;
+    border-radius: 5px;
+    display: inline-block;
+    border: none;
+    width: 100%;
+    transition: 0.3s ease;
+}

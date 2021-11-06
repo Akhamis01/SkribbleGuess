@@ -1,0 +1,23 @@
+.drawing-users{
+    display: flex;
+    flex-direction: column;
+    height: 97%;
+    margin-top: 10px;
+}
+
+.current-user-users{
+    color: darkred;
+}
+
+.users-title{
+    border-bottom: 3px solid black;
+}
+
+.users-scroll{
+    overflow: auto;
+    flex: auto;
+}
+
+.drawing-users-column{
+    height: 100%;
+}

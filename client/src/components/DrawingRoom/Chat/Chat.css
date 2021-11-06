@@ -1,0 +1,49 @@
+.drawing-chat{
+    display: flex;
+    flex-direction: column;
+    height: 97%;
+    margin-top: 10px;
+}
+
+.chat-title{
+    border-bottom: 3px solid black;
+}
+
+.messages{
+    padding: 5% 0;
+    overflow: auto;
+    flex: auto;
+}
+
+.form {
+    display: flex;
+    bottom: 0px;
+}
+
+.input {
+    border: none;
+    border-radius: 0;
+    padding: 5%;
+    width: 100%;
+    font-size: 1.2em;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.input:focus, .textarea:focus, .select:focus{
+    outline: none;
+}
+
+.sendButton {
+    color: #fff !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #2979FF;
+    padding: 20px;
+    display: inline-block;
+    border: none;
+    width: 20%;
+}
+
+.drawing-chat-column{
+    height: 100%;
+}

@@ -1,0 +1,17 @@
+.canvas-col{
+    position: relative;
+    height: 97%;
+}
+
+.b-black{
+    border: 2px solid black;
+}
+
+.drawing-canvas{
+    margin-top: 10px;
+    background-color: white;
+}
+
+.drawing-canvas:hover{
+    cursor: crosshair;
+}
