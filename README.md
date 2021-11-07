@@ -1,6 +1,6 @@
-# Guess The Drawing
+# SkribbleGuess
 
-This project was made with React.js, Node.js, and SocketIO.
-A multiplayer game where you gain points by guessing the other user's drawings correctly!
+This project was made with React.js, Node.js, and SocketIO, and hosting using Google Cloud Services.
+This is a childrens multiplayer game to assist with visual learning in classrooms!
 
 Check it out [here](https://skribbleguess.tech/)!
