@@ -129,6 +129,7 @@ dist
 
 node_modules
 build
+build/*
 .netlify
 *.sublime*
 
