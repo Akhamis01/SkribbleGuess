@@ -19,10 +19,10 @@ const Chat = ({ message, setMessage, sendMessage, messages, name, currentUser, c
                 {
                     currentUser.name === currentDrawer || disableChat ? (
                         <form className="form">
-                            <input className="input"
-                                disabled
+                            <input className="input no-input"
+                                readOnly
                                 type="text"
-                                placeholder="Guess the drawing..."
+                                placeholder="Please wait..."
                                 value={message}
                                 onChange={ (event) => setMessage(event.target.value)}
                                 onKeyPress={ (event) => event.key === 'Enter' ? sendMessage(event) : null} 
@@ -32,7 +32,7 @@ const Chat = ({ message, setMessage, sendMessage, messages, name, currentUser, c
                         <form className="form">
                             <input className="input"
                                 type="text"
-                                placeholder="Guess the drawing..."
+                                placeholder="Guess the drawing!"
                                 value={message}
                                 onChange={ (event) => setMessage(event.target.value)}
                                 onKeyPress={ (event) => event.key === 'Enter' ? sendMessage(event) : null} 

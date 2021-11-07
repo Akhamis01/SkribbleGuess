@@ -8,9 +8,10 @@ html, body {
     text-align: center;
     height: 100vh;
     align-items: center;
-    /* background-color: #1d1a1d; */
-    /* background-image: linear-gradient(to right, #42275a , #734b6d); */
-    background-image: radial-gradient(#43cea2 , #185a9d);
+    background-image: url('../../Images/bg-01.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+
 }
   
 .joinInnerContainer {
@@ -29,7 +30,7 @@ html, body {
     color: white;
     font-size: 2.5em;
     padding-bottom: 10px;
-    /* border-bottom: 2px solid white; */
+    border-bottom: 2px solid white;
 }
   
 .button {
@@ -41,13 +42,77 @@ html, body {
     border-radius: 5px;
     display: inline-block;
     border: none;
+    font-family: 'Roboto', sans-serif;
     width: 100%;
 }
   
-.mt-20 {
-    margin-top: 20px;
+
+.button2 {
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+    font-family: 'Roboto', sans-serif;
+    transform: translate(-50%, 330%);
+    width: 300px;
+    height: 50px;
+    text-align: center;
+    line-height: 10px; 
+    color: #fff;
+    font-size: 24px;
+    letter-spacing: 0px;
+   /* text-transform: uppercase;
+    text-decoration: border-box; */
+    background: linear-gradient(90deg, #7b2df7, rgb(166, 84, 221), rgb(59, 30, 139), #c871eb, #68156b, #4209ff,#7b2df7);
+    background-size: 400%;
+    border-radius: 30px;
+    z-index: 1;
 }
-  
+
+@keyframes gradi
+{
+    0%
+    {
+        background-position: 0%;
+    }
+    100%
+    {
+        background-position: 400%;
+    }
+}
+
+.button2:hover
+{
+    animation: gradi 8s linear infinite;
+}
+
+.button2:before{
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    z-index: -1;
+    background: linear-gradient(90deg, #9e4baf, #c871eb, #68156b, #4209ff,#7b2df7, #9e4baf);
+    background-size: 400%;
+    border-radius: 50px;
+    opacity: 0;
+    transition: 0.5%;
+    transition: 0.7s;
+
+}
+
+.button2:hover:before{
+    filter: blue(100px);
+    opacity: 1;
+    animation: gradi 8s linear infinite;
+}
+
+
+
+
+
+
 @media (min-width: 320px) and (max-width: 480px) {
     .joinOuterContainer {
         height: 100%;

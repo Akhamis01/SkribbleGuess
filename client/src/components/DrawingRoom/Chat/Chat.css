@@ -3,6 +3,7 @@
     flex-direction: column;
     height: 97%;
     margin-top: 10px;
+    background: rgba(255, 255, 255, 0.7);
 }
 
 .chat-title{
@@ -26,6 +27,7 @@
     padding: 5%;
     width: 100%;
     font-size: 1.2em;
+    border-top: 1px solid black;
     background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -46,4 +48,8 @@
 
 .drawing-chat-column{
     height: 100%;
+}
+
+.no-input:hover:read-only{
+    cursor: not-allowed;
 }

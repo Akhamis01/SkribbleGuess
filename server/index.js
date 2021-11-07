@@ -47,6 +47,7 @@ io.on('connection', (socket) => {
         if(error) return callback(error);
 
         socket.emit('message', { user: 'Admin', text: `${user.name}, welcome to the room!` });
+        io.to(user.room).emit('joinSound');
         socket.broadcast.to(user.room).emit('message', { user: 'Admin', text: `${user.name}, has joined the room!` });
 
         socket.join(user.room);
@@ -70,7 +71,10 @@ io.on('connection', (socket) => {
     socket.on('correctGuess', (users, callback) => {
         const user = getUser(socket.id);
         socket.emit('message', { user: 'Admin', text: 'You guessed the word!' });
+        socket.emit('correctGuessSound');
+
         socket.broadcast.to(user.room).emit('message', { user: 'Admin', text: `${user.name} has guess the word correctly!` });
+
         const newList = updateUserPoints(user.id, user.room, users);
         const userPoints = getUserPoints(user.id, user.room, newList);
 
@@ -151,6 +155,10 @@ io.on('connection', (socket) => {
     socket.on('startedGame', () => {
         const user = getUser(socket.id);
         updateAvailableRooms(user.room);
+        io.to(user.room).emit('startSound');
+        io.to(user.room).emit('message', { user: 'Admin', text: `The game has started!` });
+        io.to(user.room).emit('message', { user: 'Admin', text: `Guess your peer's drawings!` });
+        io.to(user.room).emit('message', { user: 'Admin', text: `First to 30 points win, good luck!` });
     });
 
     socket.on('getWord', () => {
@@ -167,7 +175,8 @@ io.on('connection', (socket) => {
 
     socket.on('revealWord', (guessWord) => {
         const user = getUser(socket.id);
-        io.to(user.room).emit('message', { user: 'Admin', text: `The word was ${guessWord}` });
+        io.to(user.room).emit('message', { user: 'Admin', text: `The word was ${guessWord}!` });
+        io.to(user.room).emit("nextRoundSound");
     });
 
 
@@ -177,6 +186,7 @@ io.on('connection', (socket) => {
         if(user){
             io.to(user.room).emit('message', {user: 'Admin', text: `${user.name} has left the room.`});
             io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room) });
+            io.to(user.room).emit('leaveSound');
 
             if(user.host){
                 socket.broadcast.to(user.room).emit('message', { user: 'Admin', text: `Host has left the room, the game can't continue. You may leave the room.` });

@@ -2,6 +2,15 @@ import React, {useState, useEffect, useRef} from 'react';
 import {  MDBContainer, MDBRow, MDBIcon } from "mdbreact";
 import querystring from 'query-string';
 import io from 'socket.io-client';
+import useSound from 'use-sound';
+
+import Winning from '../../../Audio/Kids_Cheering.mp3';
+import Losing from '../../../Audio/Fail_1.mp3';
+import Correct_Guess from '../../../Audio/Bell_Transition.mp3';
+import Next_Round from '../../../Audio/Whoosh_4.mp3';
+import Join_Room from '../../../Audio/Cartoon_Accent.mp3';
+import Leave_Room from '../../../Audio/Pop_1.mp3';
+import Start_Game_Sound from '../../../Audio/among-us-start-sound.mp3';
 
 import InfoBar from '../InfoBar/InfoBar';
 import Users from '../Users/Users';
@@ -14,6 +23,14 @@ let socket;
 const ENDPOINT = 'http://localhost:5000/';
 
 const DrawingPage = ({ location }) => {
+
+    const [Win_Sound] = useSound(Winning, {volume: 0.2});
+    const [Lose_Sound] = useSound(Losing, {volume: 0.2});
+    const [Correct_Guess_Sound] = useSound(Correct_Guess, {volume: 0.2});
+    const [Next_Round_Sound] = useSound(Next_Round, {volume: 0.2});
+    const [Join_Sound] = useSound(Join_Room, {volume: 0.2});
+    const [Leave_Sound] = useSound(Leave_Room, {volume: 0.2});
+    const [Start_Sound] = useSound(Start_Game_Sound, {volume: 0.2});
 
     const userIndex = useRef(0);
     const roundTime = useRef(30);
@@ -150,6 +167,48 @@ const DrawingPage = ({ location }) => {
     }, []);
     //
 
+    useEffect( () => {
+        socket.on('winSound', () => {
+            Win_Sound();
+        });
+    }, [Win_Sound]);
+
+    useEffect( () => {
+        socket.on('loseSound', () => {
+            Lose_Sound();
+        });
+    }, [Lose_Sound]);
+
+    useEffect( () => {
+        socket.on('correctGuessSound', () => {
+            Correct_Guess_Sound();
+        });
+    }, [Correct_Guess_Sound]);
+
+    useEffect( () => {
+        socket.on('nextRoundSound', () => {
+            Next_Round_Sound();
+        });
+    }, [Next_Round_Sound]);
+
+    useEffect( () => {
+        socket.on('joinSound', () => {
+            Join_Sound();
+        });
+    }, [Join_Sound]);
+
+    useEffect( () => {
+        socket.on('leaveSound', () => {
+            Leave_Sound();
+        });
+    }, [Leave_Sound]);
+
+    useEffect( () => {
+        socket.on('startSound', () => {
+            Start_Sound();
+        });
+    }, [Start_Sound]);
+
 
 
 
@@ -259,7 +318,7 @@ const DrawingPage = ({ location }) => {
                             <span className={`dot blue-dot`} onClick={() => colorChange('blue')}></span>
                             <span className={`dot green-dot`} onClick={() => colorChange('green')}></span>
                             <span className={`dot yellow-dot`} onClick={() => colorChange('yellow')}></span>
-                            <span className="fill-color" onClick={() => socket.emit('clear')}><MDBIcon icon="fill-drip" size="3x"/></span>
+                            <span className="dot fill-color" onClick={() => socket.emit('clear')}><MDBIcon icon="fill-drip" size="3x"/></span>
                         </div>
                     ) : null
                 }

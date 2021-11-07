@@ -18,11 +18,11 @@ const Users = ({ currentUser, users }) => {
                                 {users.map(({ name, points }) => (
                                     name === currentUser.name ?
                                         <div key={name} className="activeItem">
-                                            <h3 className="font-weight-bold mb-3 current-user-users"><MDBIcon icon="check" className="indigo-text"/>&nbsp; {name}: {points} pts</h3>
+                                            <h3 className="mb-3 font-user current-user-users"><MDBIcon icon="check" className="indigo-text"/>&nbsp; {name}: {points} pts</h3>
                                         </div>
                                     :
                                         <div key={name} className="activeItem">
-                                            <h3 className="font-weight-bold mb-3"><MDBIcon icon="check" className="indigo-text"/>&nbsp; {name}: {points} pts</h3>
+                                            <h3 className="mb-3 font-user">&nbsp; {name}: {points} pts</h3>
                                         </div>
                                 ))}
                             </div>

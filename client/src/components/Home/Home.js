@@ -7,7 +7,7 @@ import './Home.css';
 const Home = () => {
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
-    const [joinBtn, setJoinBtn] = useState('Host your own room!');
+    const [joinBtn, setJoinBtn] = useState('Invite your Friends!');
     const hostRoom = useRef(null);
 
     useEffect( () => {
@@ -16,38 +16,39 @@ const Home = () => {
 
     useEffect( () => {
         if(room){
-            setJoinBtn('Join a Friend!')
+            setJoinBtn('Join your Friends!')
         } else{
-            setJoinBtn('Host your own room!');
+            setJoinBtn('Invite your Friends!');
         }
     }, [room]);
 
     const hostRoomString = (length, chars) => {
         var result = '';
-        for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+        for (var i = length; i > 0; i--) result += chars[Math.floor(Math.random() * chars.length)];
         return result;
     }
 
     return (
         <div className="joinOuterContainer">
             <div className="joinInnerContainer">
-                <h1 className="heading">Join a Room!</h1>
+                <h1 className="heading">Lets Play Together!</h1>
                 <div><MDBInput label="Name" size="lg" labelClass="md-outline" type="text" onChange={ (event) => setName(event.target.value) } /> </div>
                 <div><MDBInput label="Room (Leave blank to host)" size="lg" type="text" onChange={ (event) => setRoom(event.target.value) } /> </div>
                 {
                     room ? (
                         <Link onClick={ event => (!name) ? event.preventDefault() : null} to={`/DrawingRoom?name=${name}&room=${room}`}>
-                            <button className="button mt-20" type="submit">{joinBtn}</button>
+                            <button className="button button2" type="submit">{joinBtn}</button>
+                        
                         </Link>
                     ): (
                         <Link onClick={ event => (!name) ? event.preventDefault() : null} to={`/DrawingRoom?name=${name}&room=${hostRoom.current}`}>
-                            <button className="button mt-20" type="submit">{joinBtn}</button>
+                            <button className=" button button2" type="submit">{joinBtn}</button>
+                            
                         </Link>
                     )
                 }
             </div>
         </div>
-        
     );
 };
 

@@ -3,10 +3,12 @@
     flex-direction: column;
     height: 97%;
     margin-top: 10px;
+    background: rgba(255, 255, 255, 0.7);
 }
 
 .current-user-users{
-    color: darkred;
+    color: purple;
+    background: rgba(255, 255, 255, 1);
 }
 
 .users-title{
@@ -20,4 +22,8 @@
 
 .drawing-users-column{
     height: 100%;
+}
+
+.font-user{
+    font-size: x-large;
 }
