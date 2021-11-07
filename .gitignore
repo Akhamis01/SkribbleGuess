@@ -128,6 +128,8 @@ dist
 **/*.back.*
 
 node_modules
+build
+*.netlify
 
 *.sublime*
 
