@@ -20,7 +20,7 @@ import Chat from '../Chat/Chat';
 import './DrawingPage.css';
 
 let socket;
-const ENDPOINT = 'http://localhost:5000/';
+const ENDPOINT = 'https://skribbleguessbackend.ue.r.appspot.com/';
 
 const DrawingPage = ({ location }) => {
 
@@ -33,7 +33,7 @@ const DrawingPage = ({ location }) => {
     const [Start_Sound] = useSound(Start_Game_Sound, {volume: 0.2});
 
     const userIndex = useRef(0);
-    const roundTime = useRef(30);
+    const roundTime = useRef(75);
     const timer = useRef(null);
 
     const [name, setName] = useState('');

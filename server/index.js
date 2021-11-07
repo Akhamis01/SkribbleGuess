@@ -78,11 +78,12 @@ io.on('connection', (socket) => {
         const newList = updateUserPoints(user.id, user.room, users);
         const userPoints = getUserPoints(user.id, user.room, newList);
 
-        if(userPoints >= 40){
+        if(userPoints >= 30){
             io.to(user.room).emit('message', { user: 'Admin', text: `${user.name} has won the game! You may leave the room.` });
-            io.to(user.room).emit('changeTime', 2);
+            io.to(user.room).emit('changeTime', 5);
             io.to(user.room).emit('roomData', {room:user.room, users: newList});
             io.to(user.room).emit('endGame');
+            socket.emit('winSound');
             return;
         }
 
@@ -90,11 +91,11 @@ io.on('connection', (socket) => {
         const allGuessed = checkAllGuesses(user.room, newList);
 
         if(firstGuess && !allGuessed){
-            io.to(user.room).emit('changeTime', 10);
+            io.to(user.room).emit('changeTime', 15);
         }
 
         if(allGuessed){
-            io.to(user.room).emit('changeTime', 2);
+            io.to(user.room).emit('changeTime', 5);
             io.to(user.room).emit('roomData', {room:user.room, users: newList});
         } else{
             io.to(user.room).emit('roomData', {room:user.room, users: newList});

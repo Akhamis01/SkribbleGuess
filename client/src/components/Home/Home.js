@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { MDBInput } from "mdbreact";
+import 'animate.css';
 
 import './Home.css';
 
@@ -31,7 +32,7 @@ const Home = () => {
     return (
         <div className="joinOuterContainer">
             <div className="joinInnerContainer">
-                <h1 className="heading">Lets Play Together!</h1>
+                <h1 className="heading animate__animated animate__bounceInDown">SkribbleGuess!</h1>
                 <div><MDBInput label="Name" size="lg" labelClass="md-outline" type="text" onChange={ (event) => setName(event.target.value) } /> </div>
                 <div><MDBInput label="Room (Leave blank to host)" size="lg" type="text" onChange={ (event) => setRoom(event.target.value) } /> </div>
                 {
