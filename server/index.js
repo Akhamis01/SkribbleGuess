@@ -20,7 +20,7 @@ const {
     getUserPoints
 } = require('./users.js');
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8080;
 const router = require('./router');
 
 const app = express();
