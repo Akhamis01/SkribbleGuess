@@ -139,6 +139,24 @@ io.on('connection', (socket) => {
         io.to(user.room).emit('clear2');
     });
 
+    socket.on('getWord', () => {
+        const user = getUser(socket.id);
+        const wordToGuess = getRandomWord();
+        io.to(user.room).emit('setGuessWord', wordToGuess);
+    });
+
+    // Changes color
+    socket.on('setColor', (color) => {
+        const user = getUser(socket.id);
+        socket.broadcast.to(user.room).emit('setColor2', color);
+    });
+
+    socket.on('revealWord', (guessWord) => {
+        const user = getUser(socket.id);
+        io.to(user.room).emit('message', { user: 'Admin', text: `The word was ${guessWord}!` });
+        io.to(user.room).emit("nextRoundSound");
+    });
+
 
     // Update list of users
     socket.on('updateUsers', (userIndex, currentList) => {
@@ -160,24 +178,6 @@ io.on('connection', (socket) => {
         io.to(user.room).emit('message', { user: 'Admin', text: `The game has started!` });
         io.to(user.room).emit('message', { user: 'Admin', text: `Guess your peer's drawings!` });
         io.to(user.room).emit('message', { user: 'Admin', text: `First to 30 points win, good luck!` });
-    });
-
-    socket.on('getWord', () => {
-        const user = getUser(socket.id);
-        const wordToGuess = getRandomWord();
-        io.to(user.room).emit('setGuessWord', wordToGuess);
-    });
-
-    // Changes color
-    socket.on('setColor', (color) => {
-        const user = getUser(socket.id);
-        socket.broadcast.to(user.room).emit('setColor2', color);
-    });
-
-    socket.on('revealWord', (guessWord) => {
-        const user = getUser(socket.id);
-        io.to(user.room).emit('message', { user: 'Admin', text: `The word was ${guessWord}!` });
-        io.to(user.room).emit("nextRoundSound");
     });
 
 
